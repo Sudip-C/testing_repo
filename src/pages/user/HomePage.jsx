@@ -1,4 +1,37 @@
+import { useState } from "react";
+
 const HomePage = () => {
+
+const all_Events=[
+  {
+    "id":1,
+    "title":"Masai alumni reunion",
+    "time":"05.00 pm",
+    "date":"22/07/2022"
+  },
+  {
+    "id":2,
+    "title":"Masai alumni reunion",
+    "time":"05.00 pm",
+    "date":"22/07/2022"
+  },
+  {
+    "id":3,
+    "title":"Masai alumni reunion",
+    "time":"05.00 pm",
+    "date":"22/07/2022"
+  }
+]
+
+const [events,setEvents] = useState(all_Events||[])
+const [searchInput,setSearchInput] = useState("")
+const searchEvents = ()=>{
+console.log(searchInput)
+let filtered= all_Events.filter((el)=>{el.title==searchInput})
+
+setEvents(filtered)
+}
+
   return (
     <div
       className="border-2 border-black   sm:grid 
@@ -16,11 +49,14 @@ const HomePage = () => {
 
               <div className="border-2 border-black p-1">
               <input
+                value={searchInput}
+                onChange={(e)=>setSearchInput(e.target.value)}
                 type="text"
                 placeholder="search your  event..."
                 className="border-2 border-gray-900 border-solid "
               ></input>
-              <button>Search</button>
+              <button className="border-solid border-2 border-black-500
+               p-1 rounded-md m-2" onClick={searchEvents}>Search</button>
             </div> 
           </div>
         </div>
@@ -36,39 +72,36 @@ const HomePage = () => {
             <div>
               <h1>events overview</h1>
             </div>
-            <div className="flex flex-row justify-around border-2 border-black p-2">
-              <p className="border-2 border-black">details</p>
-              <p className="border-2 border-black">time</p>
-              <p className="border-2 border-black">date</p>
+            {events.map((el)=>(
+              <div key={el.id} className="flex flex-row rounded-lg  shadow hover:shadow-lg justify-around p-2">
+              <p className=" font-bold border-2 border-black">{el.title}</p>
+              <p className="border-2 border-black">{el.time}</p>
+              <p className=" border-2 border-black">{el.date}</p>
               <button className="border-2 border-black">Show details</button>
             </div>
-            <div className="flex flex-row justify-around border-2 border-black p-2">
-              <p className="border-2 border-black">details</p>
-              <p className="border-2 border-black">time</p>
-              <p className="border-2 border-black">date</p>
-              <button className="border-2 border-black">Show details</button>
-            </div>
-
+            ))}
             <div></div>
           </div>
 
-          <div className="border-2 border-blue-700">
+          <div id="active_Events" className="border-2 border-blue-700">
             <div className="p-2">
               <h1>Active Events</h1>
             </div>
             <div id="events_active" className="p-3 flex flex-col gap-2">
-              <div className="flex flex-row justify-around border-2 border-black p-2">
+            {events.map((el)=>(
+              <div key={el.id} className="flex flex-row rounded-lg shadow hover:shadow-lg justify-around  p-2">
+              <p className="border-2 font-bold border-black">{el.title}</p>
+              <p className="border-2 border-black">{el.time}</p>
+              <p className="border-2 border-black">{el.date}</p>
+              <button className="border-2 border-black">Show details</button>
+            </div>
+            ))}
+              {/* <div className="flex flex-row justify-around border-2 border-black p-2">
                 <p className="border-2 border-black">details</p>
                 <p className="border-2 border-black">time</p>
                 <p className="border-2 border-black">date</p>
                 <button className="border-2 border-black">Show details</button>
-              </div>
-              <div className="flex flex-row justify-around border-2 border-black p-2">
-                <p className="border-2 border-black">details</p>
-                <p className="border-2 border-black">time</p>
-                <p className="border-2 border-black">date</p>
-                <button className="border-2 border-black">Show details</button>
-              </div>
+              </div> */}
 
               <div></div>
             </div>
