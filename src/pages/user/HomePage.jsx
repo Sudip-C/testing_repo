@@ -14,14 +14,14 @@ const HomePage = () => {
               <h1> All Events</h1>
             </div>
 
-              <div className="border-2 border-black p-1">
+            <div className="border-2 border-black p-1">
               <input
                 type="text"
                 placeholder="search your  event..."
                 className="border-2 border-gray-900 border-solid "
               ></input>
               <button>Search</button>
-            </div> 
+            </div>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ const HomePage = () => {
             className="p-3 flex flex-col gap-2 border-2 border-red-500"
           >
             <div>
-              <h1>events overview</h1>
+              <h1>All events overview</h1>
             </div>
             <div className="flex flex-row justify-around border-2 border-black p-2">
               <p className="border-2 border-black">details</p>
@@ -69,8 +69,6 @@ const HomePage = () => {
                 <p className="border-2 border-black">date</p>
                 <button className="border-2 border-black">Show details</button>
               </div>
-
-              <div></div>
             </div>
           </div>
         </div>
